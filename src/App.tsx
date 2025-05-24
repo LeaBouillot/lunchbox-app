@@ -6,12 +6,14 @@ import Main from './routes/Main';
 import MyOrder from './routes/MyOrder';
 import Order from './routes/Order';
 import Loading from './components/Login/Loading';
+import LoginMain from './components/Login/LoginMain';
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Loading />} />
+        <Route path="/login" element={<LoginMain />} /> 
         <Route path="/join" element={<Join />} />
         <Route path="/main" element={<Main />} />
         <Route path="/myorder" element={<MyOrder />} />
