@@ -1,32 +1,35 @@
-import { useState, FormEvent, ChangeEvent } from "react";
+import { FormEvent, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Footer";
 
-export default function LoginMain() {
-  const [input, setInput] = useState({
-    username: "",
-    password: "",
-  });
 
+interface InputState {
+  email: string;
+  password: string;
+}
+
+interface PropTypes {
+  input: InputState;
+  setInput: React.Dispatch<React.SetStateAction<InputState>>;
+}
+
+export default function LoginMain({ input, setInput }: PropTypes) {
   const handleSubmitEvent = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (input.username !== "" && input.password !== "") {
-      // dispatch action from hooks
+    if (input.email && input.password) {
       console.log("Form submitted", input);
-      return;
+    } else {
+      alert("Veuillez remplir les champs requis.");
     }
-    alert("Veuillez remplir les champs requis.");
   };
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-  const { name, value } = e.target;
- // console.log(`${name}: ${value}`); 
-  setInput((prev) => ({
-    ...prev,
-    [name]: value,
-  }));
-};
-
+    const { name, value } = e.target;
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="flex flex-col justify-between min-h-screen bg-gray-50">
@@ -37,17 +40,14 @@ export default function LoginMain() {
           </h2>
           <form onSubmit={handleSubmitEvent} className="space-y-6">
             <div>
-              <label
-                htmlFor="user-email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="user-email" className="block text-sm font-medium text-gray-700">
                 Email
               </label>
               <input
                 type="email"
                 id="user-email"
-                name="username"
-                value={input.username}
+                name="email"
+                value={input.email}
                 onChange={handleInput}
                 placeholder="exemple@mail.com"
                 required
@@ -56,10 +56,7 @@ export default function LoginMain() {
             </div>
 
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Mot de passe
               </label>
               <input
@@ -83,10 +80,7 @@ export default function LoginMain() {
 
           <p className="mt-6 text-sm text-center text-gray-600">
             Vous n'avez pas de compte ?{" "}
-            <Link
-              to="/join"
-              className="font-medium text-cyan-600 hover:underline"
-            >
+            <Link to="/join" className="font-medium text-cyan-600 hover:underline">
               Inscription
             </Link>
           </p>
