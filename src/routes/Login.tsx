@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../components/Login/Loading";
 import LoginMain from "../components/Login/LoginMain";
 import RunLogin from "../backend/RunLogin";

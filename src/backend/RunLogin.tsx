@@ -12,6 +12,7 @@ const GET_USER_INFO = gql`
       user_id
       name
       email
+      password
       about_me
       joined
       is_active

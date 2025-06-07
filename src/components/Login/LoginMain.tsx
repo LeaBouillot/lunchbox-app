@@ -108,3 +108,36 @@ export default function LoginMain({
     </div>
   );
 }
+
+/* 
+Étapes pour coder 
+
+1. Comprendre le rôle du composant LoginMain.tsx
+- afficher un formulaire de connexion permettant à l'utilisateur de se connecter en fournissant - un email et un mot de passe
+- l'interaction avec l'état (input), 
+- valider les données, 
+- déclencher l'action de connexion.
+
+2. Définir les props : Les informations que le composant recevra (données d’entrée, fonction de gestion de la soumission).
+- input : les données d'entrée de l'utilisateur (email et mot de passe).
+- setInput
+- handleLogin : la fonction qui sera exécutée lors de la soumission du formulaire.
+- error (optionnel) : pour afficher un message d'erreur si la connexion échoue.
+
+3. Structurer le composant : 
+Inputs : un pour l’email et un pour le mot de passe.
+Un bouton pour soumettre le formulaire.
+Une zone pour afficher les messages d’erreur .
+Des liens (pour l'inscription ou pour réinitialiser le mot de passe).
+
+4. Créer les fonctions pr gérer les événements
+(handleInput) pour gérer le changement dans les champs de texte 
+(handleSubmit) pour soumettre le formulaire 
+
+5. Afficher les erreurs :
+on passe l’erreur comme prop depuis le composant parent (Login.tsx)
+
+6. Tester : Vérifie que tout fonctionne.
+
+7. Révision du design
+*/
