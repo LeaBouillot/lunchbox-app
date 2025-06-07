@@ -1,7 +1,6 @@
-import { FormEvent, ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Footer";
-
 
 interface InputState {
   email: string;
@@ -11,18 +10,16 @@ interface InputState {
 interface PropTypes {
   input: InputState;
   setInput: React.Dispatch<React.SetStateAction<InputState>>;
+  handleLogin: () => void;
+  error: string | null; // Prop pour l'erreur
 }
 
-export default function LoginMain({ input, setInput }: PropTypes) {
-  const handleSubmitEvent = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (input.email && input.password) {
-      console.log("Form submitted", input);
-    } else {
-      alert("Veuillez remplir les champs requis.");
-    }
-  };
-
+export default function LoginMain({
+  input,
+  setInput,
+  handleLogin,
+  error,
+}: PropTypes) {
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInput((prev) => ({
@@ -38,9 +35,24 @@ export default function LoginMain({ input, setInput }: PropTypes) {
           <h2 className="mb-8 text-3xl font-bold text-center text-gray-800">
             Connexion
           </h2>
-          <form onSubmit={handleSubmitEvent} className="space-y-6">
+
+          {/* Affichage de l'erreur */}
+          {error && (
+            <div className="mb-4 text-center text-red-500">{error}</div>
+          )}
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleLogin();
+            }}
+            className="space-y-6"
+          >
             <div>
-              <label htmlFor="user-email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="user-email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email
               </label>
               <input
@@ -56,7 +68,10 @@ export default function LoginMain({ input, setInput }: PropTypes) {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Mot de passe
               </label>
               <input
@@ -80,7 +95,10 @@ export default function LoginMain({ input, setInput }: PropTypes) {
 
           <p className="mt-6 text-sm text-center text-gray-600">
             Vous n'avez pas de compte ?{" "}
-            <Link to="/join" className="font-medium text-cyan-600 hover:underline">
+            <Link
+              to="/join"
+              className="font-medium text-cyan-600 hover:underline"
+            >
               Inscription
             </Link>
           </p>

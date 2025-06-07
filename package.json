@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
+    "@apollo/client": "^3.13.8",
     "@types/node": "^16.18.126",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "@types/react-router-dom": "^5.3.3",
+    "graphql": "^16.11.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.0",
