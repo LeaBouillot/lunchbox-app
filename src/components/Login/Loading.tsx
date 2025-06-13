@@ -16,10 +16,9 @@ export default function Loading() {
         backgroundImage: "url(/lunchbox.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "700px",
       }}
     >
-      <h1 className="absolute text-4xl font-semibold text-center text-white font-roboto bg-opacity-70 rounded-lg max-w-[400px] p-16 m-6">
+      <h1 className="absolute text-4xl font-semibold text-center text-white font-roboto bg-black bg-opacity-70 rounded-lg max-w-[400px] p-16 m-6">
         Lunch Box <br />
         qui simplifie <br />
         votre quotidien !
