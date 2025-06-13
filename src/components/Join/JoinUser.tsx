@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer";
 
 interface InputState {
+  user_id: string;
   name: string;
   email: string;
   password: string;
@@ -35,6 +36,21 @@ export default function JoinUser({
           {error && <div className="mb-4 text-center text-red-500">{error}</div>}
 
           <form onSubmit={handleJoin} className="space-y-6">
+                    <div>
+              <label htmlFor="user_id" className="block text-sm font-medium text-gray-700">
+                User Id (personalisé)
+              </label>
+              <input
+                type="text"
+                id="user_id"
+                name="user_id"
+                value={input.user_id}
+                onChange={handleInput}
+                required
+                disabled={loading}
+                className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:ring-cyan-500 focus:border-cyan-500"
+              />
+            </div>
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Nom
