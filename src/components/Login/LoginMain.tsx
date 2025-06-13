@@ -9,25 +9,19 @@ interface InputState {
 
 interface PropTypes {
   input: InputState;
-  setInput: React.Dispatch<React.SetStateAction<InputState>>;
+  setInput: React.Dispatch<React.SetStateAction<InputState>>; 
   handleLogin: () => void;
-  error: string | null; // Prop pour l'erreur
+  error: string | null;
+  handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function LoginMain({
   input,
-  setInput,
+  setInput, // optionnel si plus utilisé dans LoginMain
   handleLogin,
   error,
+  handleInput, // destructuré ici
 }: PropTypes) {
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setInput((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   return (
     <div className="flex flex-col justify-between min-h-screen bg-gray-50">
       <div className="flex flex-col items-center justify-center px-6 py-12 sm:px-8">
@@ -60,7 +54,7 @@ export default function LoginMain({
                 id="user-email"
                 name="email"
                 value={input.email}
-                onChange={handleInput}
+                onChange={handleInput} // utilise la fonction reçue du parent
                 placeholder="exemple@mail.com"
                 required
                 className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg shadow-sm focus:ring-cyan-500 focus:border-cyan-500"
