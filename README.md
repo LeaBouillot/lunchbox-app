@@ -23,7 +23,7 @@ src/
 │   │   └── JoinUser.tsx       # Formulaire d'inscription
 │   ├── Login/
 │   │   └── Loading.tsx
-│   │   └── LoginMain.tsx       # Formulaire login
+│   │   └── LoginMain.tsx      # Formulaire login
 │   └── Footer.tsx             # Pied de page
 ├── backend/
 │   └── RunLogin.ts
@@ -74,7 +74,7 @@ const client = new ApolloClient({
 4. Lance le serveur de développement :
 
 ```bash
-npm run dev
+npm start
 ```
 
 Accède ensuite à [http://localhost:3000/join](http://localhost:3000/join) pour tester l’inscription.
