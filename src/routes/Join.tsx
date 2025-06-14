@@ -45,7 +45,7 @@ export default function Join() {
     try {
       const user = await runSignup(
         client,
-        input.user_id, // passer user_id ici
+        input.user_id,
         input.name,
         input.email,
         input.password
